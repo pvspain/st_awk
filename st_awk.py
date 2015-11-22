@@ -12,7 +12,7 @@ class st_awkCommand(sublime_plugin.TextCommand):
 
         out = ''
         try:
-            p = Popen(['awk', expr], stdout=PIPE, stdin=PIPE, stderr=PIPE)
+            p = Popen(['awk', expr], stdout=PIPE, stdin=PIPE, stderr=PIPE, universal_newlines=True)
             out, err = p.communicate(input=content)
             if err != '':
                 sublime.error_message('Error when run awk: \n' + err)
